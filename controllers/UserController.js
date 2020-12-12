@@ -15,16 +15,15 @@ exports.signin = async (req, res, next) => {
             {
                 const token = jwt.sign({
                     id: user.id,
-                    name: user.username,
-                    email: user.password,
-                    rol: user.rol
+                    name: user.name,
+                    email: user.email,
                 }, 'config.secret', {
                     expiresIn: 86400,
                 });
                 res.status(200).send({
-                    //auth: true,
-                    accessToken: token
-                    //user: user
+                    auth: true,
+                    accessToken: token,
+                    user: user
                 });
             }
             else
