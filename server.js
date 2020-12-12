@@ -1,7 +1,7 @@
 /*en caso de  hacer uso con el directorio controlador se 
 debe importar como se observa en la siguiente linea, con el nombre del archivo js
 que contiene la logica */
-//const controller = require('./controller/nombredelcontrollador.js');
+const controller = require('./controllers/UserController.js');
 const express = require('express');
 const db = require('./models');
 const app = express()
@@ -24,7 +24,10 @@ app.get('/', function(req, res) {
     console.log("Estructura base del proyecto backend");
     res.send("Estructura base del proyecto backend");
 });
-const port = 3000
+
+app.post('/api/auth/signin', controller.signin);
+
+const port = 5000
 app.listen(port, () => {
     console.log(`Running on http://localhost:${port}`)
 })
